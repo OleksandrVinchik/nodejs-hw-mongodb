@@ -2,17 +2,17 @@ import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
 import { env } from './utils/env.js';
-import router from './routers/contacts.js';
+import routes from './routers/index.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+import cookieParser from 'cookie-parser';
 
 const PORT = Number(env('PORT', '3000'));
 
 export const setupServer = () => {
   const app = express();
-
   app.use(cors());
-
+  app.use(cookieParser());
   app.use(
     pino({
       transport: {
@@ -25,7 +25,7 @@ export const setupServer = () => {
     res.json({ message: 'Server is enable' });
   });
 
-  app.use('/contacts', router);
+  app.use('/', routes);
 
   app.use('*', notFoundHandler);
 
