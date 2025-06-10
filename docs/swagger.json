@@ -542,33 +542,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Delete contact by id",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "status",
-                    "message",
-                    "data"
-                  ],
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "example": 204
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Contact deleted sucsessfully!"
-                    },
-                    "data": {
-                      "type": "object",
-                      "example": {}
-                    }
-                  }
-                }
-              }
-            }
+            "description": "Delete contact by id"
           },
           "401": {
             "$ref": "#/components/responses/401"
